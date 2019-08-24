@@ -11,6 +11,29 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PagesController@home');
+Route::get('/about', 'PagesController@about');
+Route::get('/contact', 'PagesController@contact');
+Route::get('/projects','ProjectsController@index');
+Route::get('/projects/create','ProjectsController@create');
+Route::post('/projects','ProjectsController@store');
+Route::get('/auth', 'Auth\LoginController@index');
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+// Route::get('/contact', function(){
+//   return view('contact');
+// });
+// Route::get('/about', function(){
+//   $list = [
+//     'This is first point about us',
+//     'This is second point about us',
+//     'This is third point about us'
+//   ];
+//   return view('about')->withList($list);
+// });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
