@@ -29,10 +29,13 @@ class ProjectsController extends Controller
     }
     public function store()
     {
-      Project::create([
-        'title'=>request('title'),
-        'description'=>request('description'),
+      $attrs = request()->validate([
+        'title'=> ['required', 'min:7', 'max:225'],
+        'description' => ['required', 'min:10']
       ]);
+      //Could also say Project::create(request(['title', 'description']))
+      // Personally, I like the below method better as it FEELS like I have more control, though in truth they are the same thing.
+      Project::create($attrs);
       // $proj = new Project();
       // $proj->title = request('title');
       // $proj->description = request('description');
