@@ -1,11 +1,17 @@
 @extends('assets.layout')
 @section('content')
+@foreach($projects as $project)
+<p>{{$project->title}}</p>
+@endforeach
 @if(session()->has('alert-success'))
     <div class="alert alert-success">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>{{ session()->get('alert-success') }}
     </div>
 @endif
+
 <h1>Projects</h1>
+
+
 <div class ="container">
   <div class ="row row-striped">
     <div class = "col col-md-3"><h4>Project Title</h4></div>
@@ -25,5 +31,6 @@
 
 </div>
 @endforeach
+
 </div>
 @endsection
