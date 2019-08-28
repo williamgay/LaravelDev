@@ -7,12 +7,12 @@
 @endif
 <h1>Create New Project</h1>
 <form method = "POST" action="/projects">
-  {{csrf_field()}}
+  @csrf
   <div>
-    <input type="text" name="title" placeholder="Project Title">
+    <input type="text" name="title" placeholder="Project Title" required>
   </div>
   <div>
-    <textarea name="description" rows="8" cols="80" placeholder="Project Description"></textarea>
+    <textarea name="description" rows="8" cols="80" placeholder="Project Description" required></textarea>
   </div>
   <div>
     <button type="submit" class="btn btn-success" name="button">Create Project</button>
