@@ -23,6 +23,8 @@ Route::get('/auth', 'Auth\LoginController@index');
 Route::get('/admin', 'AdminController@admin')
 ->middleware('is_admin')
 ->name('admin');
+Route::post('/tasks/{task}', 'ProjectTasksController@update');
+Route::post('/projects/{project}/tasks', 'ProjectTasksController@store');
 // Route::get('/', function () {
 //     return view('welcome');
 // });
