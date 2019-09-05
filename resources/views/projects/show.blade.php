@@ -12,8 +12,11 @@
     <form action = "/tasks/{{$task->id}}" method ="POST">
       <!-- @method("PATCH") -->
       @csrf
-      <label for="completed" class = "checkbox {{$task->completed ? 'is-complete' : ''}}">{!! $task->description !!}</label>
+
+          {!! $task->description !!}
+          @if($owner  || $user && $user->type == "admin")
       <input type ="checkbox" name="completed" onChange = "this.form.submit()" {{$task->completed ? 'checked' : ''}}>
+          @endif
     </form>
     <p>{!! $task->details !!}</p>
     <hr>
@@ -22,7 +25,7 @@
   @endforeach
   </div>
 @endif
-
+@if($owner  || $user && $user->type == "admin")
 <div class="card">
 <form class="createTask" action="/projects/{{$project->id}}/tasks" method="post">
   @csrf
@@ -52,5 +55,5 @@
 @endif
 </form>
 </div>
-
+@endif
 @endsection

@@ -15,6 +15,11 @@ const DEFAULT_TYPE = "default";
 public function isAdmin(){
   return $this->type === self::ADMIN_TYPE;
 }
+
+    public function owns($project)
+    {
+        return (auth()->user()->id == $project->owner_id);
+    }
     /**
      * The attributes that are mass assignable.
      *
